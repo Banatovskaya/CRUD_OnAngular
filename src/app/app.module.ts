@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DirectoryListComponent } from './components/directory-list/directory-list.component';
@@ -14,7 +15,7 @@ import { OpenWindowComponent } from './components/open-window/open-window.compon
     OpenWindowComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

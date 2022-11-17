@@ -2,7 +2,7 @@
 <div class="container">
   <h3 class="add">
     <div class="add__text">створити</div>
-    <div class="icon list_icon" (click)="showWindowForAdd()">
+    <div class="icon list_icon" (click)="showWindowForAdd(true)">
       <img class="icon__img" src="../../../assets/square-plus-solid.svg" alt=""></div>
   </h3>
   <div class="list">
@@ -12,8 +12,15 @@
     <div class="icon"></div>
     <div class="icon"></div>
   </div>
-  <app-directory-item *ngFor="let item of list" [item]="item"></app-directory-item>
-  <app-open-window *ngIf="isWindowForAddingOpen" [isWindowForAddingOpen]="isWindowForAddingOpen"
-    (onChangedState)="closeWindowForAdd($event)"></app-open-window>
-  <div>{{isWindowForAddingOpen}}</div>
+  <app-directory-item *ngFor="let item of list" 
+  [item]="item"
+  [isWindowForAddingOpen]="isWindowForAddingOpen"
+  (onChangedState)="showWindowForAdd($event)"
+  ></app-directory-item>
+  <app-open-window *ngIf="isWindowForAddingOpen" 
+  [isWindowForAddingOpen]="isWindowForAddingOpen"
+  (onChangedState)="showWindowForAdd($event)"
+  (onChangedData)="postData($event)"
+  ></app-open-window>
+
 </div>

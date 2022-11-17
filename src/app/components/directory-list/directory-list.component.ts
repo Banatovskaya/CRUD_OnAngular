@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Idata } from 'src/app/interfaces';
+import { RequestService } from 'src/app/services/request.service';
 
 @Component({
   selector: 'app-directory-list',
@@ -20,18 +21,20 @@ export class DirectoryListComponent implements OnInit {
     },
   ]
   isWindowForAddingOpen:boolean;
-  constructor() { }
+  constructor(private request: RequestService) { }
 
   ngOnInit(): void {
     this.isWindowForAddingOpen = false;
   }
 
-  showWindowForAdd () {
-    this.isWindowForAddingOpen = true;
-    console.log(this.isWindowForAddingOpen)
+  showWindowForAdd(isOpen:boolean) {
+    this.isWindowForAddingOpen = isOpen;
   }
   
-  closeWindowForAdd(isOpen:boolean) {
-    this.isWindowForAddingOpen = isOpen
+  postData (data:Idata) {
+    
+    console.log(data)
+    this.request.postData(data)
+    this.list.push(data)
   }
 }
