@@ -1,0 +1,36 @@
+.title {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  background: #c9c0c0;
+  margin: 5px;
+  padding: 10px 20px;
+  align-items: center;
+}
+
+.list__name {
+  width: 50%;
+}
+
+.list__price {
+  width: 20%;
+}
+
+.list__unit {
+  width: 10%;
+}
+
+.add {
+  text-align: center;
+}
+
+.add__text {
+  font-size: 20px;
+}
+
+.list_icon {
+  display: inline-block;
+}

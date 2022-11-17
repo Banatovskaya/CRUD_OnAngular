@@ -1,0 +1,19 @@
+<div class="form-wrap">
+  <form class="form">
+    <div class="form-close" (click)="onClose()">&times;</div>
+    <div class="form-control">
+      <label class="form-control__lable" for="name">Назва</label>
+      <input class="form-control__input" type="text" name="name" id="name" placeholder="назва товару">
+    </div>
+    <div class="form-control">
+      <label class="form-control__lable" for="price">ціна</label>
+      <input class="form-control__input" type="text" name="price" id="price" placeholder="ціна" />
+    </div>
+    <div class="form-control">
+      <label class="form-control__lable" for="unit">одиниця виміру</label>
+      <input class="form-control__input" type="text" name="unit" id="price" placeholder="одиниця виміру" />
+    </div>
+    <button type="submit" class="btn" (click)="sendData()">Створити</button>
+    <div>{{isWindowForAddingOpen}}</div>
+  </form>
+</div>
