@@ -37,9 +37,8 @@ export class DirectoryListComponent implements OnInit {
     for(let i = 0; i< this.list.length; i++){
       this.request.postData(this.list[i])
     }
-    
-     this.dataList = this.request.getData();
-     console.log('///', this.dataList)
+    //
+    this.dataList = (this.request.getData()).sort((a, b) => (a.id - b.id));
   }
 
   showWindowForAdd(isOpen:boolean) {
@@ -54,14 +53,13 @@ export class DirectoryListComponent implements OnInit {
   }
   
   postData (data:Idata) {
-    console.log(data)
-    this.request.postData(data)
-    this.dataList.push(data)
+    this.request.postData(data);
+    let filteredItem = this.dataList.filter(el => (el.id != data.id))
+    this.dataList = ([...filteredItem, data]).sort((a, b) => (a.id - b.id));
   }
 
   //set data for form if we want to change item
   setDataForOpenWindow(item : Idata){
     this.itemForChange = item;
-  
   }
 }

@@ -32,13 +32,14 @@ export class OpenWindowComponent implements OnInit {
       price: this.itemForChange.price,
       unit: this.itemForChange.unit  
     }
-    console.log(data)
+    
     this.onPostedData.emit(data)
+    this.onClose();
     this.itemForChange.id = 0;
     this.itemForChange.name = '';
     this.itemForChange.price = 0;
     this.itemForChange.unit = '';
-    this.onClose();
+    console.log("SEND", data)
   }  
   
   onClose(){
