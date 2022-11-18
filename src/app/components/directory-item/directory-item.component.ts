@@ -8,10 +8,11 @@ import { Idata } from 'src/app/interfaces';
 })
 export class DirectoryItemComponent implements OnInit {
   @Input()item: Idata;
-  @Input()isWindowForAddingOpen:boolean
+  // @Input()isWindowForAddingOpen:boolean
   @Output() onChangedState: EventEmitter<boolean> = new EventEmitter();
+  @Output() onChangedData: EventEmitter<Idata> = new EventEmitter();
   
-  // isWindowForAddingOpen:boolean;
+  isWindowForAddingOpen:boolean;
 
   constructor() { }
 
@@ -21,7 +22,9 @@ export class DirectoryItemComponent implements OnInit {
   showWindowForAdd () {
     this.isWindowForAddingOpen = true;
     this.onChangedState.emit(this.isWindowForAddingOpen)
+    this.onChangedData.emit(this.item)
+    console.log(this.item)
   }
 
-  
+
 }

@@ -8,7 +8,7 @@ import { RequestService } from 'src/app/services/request.service';
   styleUrls: ['./directory-list.component.css']
 })
 export class DirectoryListComponent implements OnInit {
-  list: Idata[] = [
+  list : Idata[] = [  //just for first loading to localStorage - you can delete 
     { id:1,
       name: 'milk',
       price: 40,
@@ -19,22 +19,49 @@ export class DirectoryListComponent implements OnInit {
       price: 10,
       unit: 'pcs'
     },
-  ]
-  isWindowForAddingOpen:boolean;
-  constructor(private request: RequestService) { }
+  ];
+  dataList : Idata[];
+  isWindowForAddingOpen : boolean;
+  itemForChange : Idata = {
+    id: 0,
+    name: '',
+    price: 0,
+    unit: ''
+  };
+  constructor(private request: RequestService) { };
 
   ngOnInit(): void {
     this.isWindowForAddingOpen = false;
+
+    // just for first loading to localStorage - you can delete 
+    for(let i = 0; i< this.list.length; i++){
+      this.request.postData(this.list[i])
+    }
+    
+     this.dataList = this.request.getData();
+     console.log('///', this.dataList)
   }
 
   showWindowForAdd(isOpen:boolean) {
     this.isWindowForAddingOpen = isOpen;
+    //the fields of form must be empty. They aren`t epmty after setDataForOpenWindow
+    this.itemForChange = { 
+      id: 0,
+      name: '',
+      price: 0,
+      unit: ''
+    }
   }
   
   postData (data:Idata) {
-    
     console.log(data)
     this.request.postData(data)
-    this.list.push(data)
+    this.dataList.push(data)
+  }
+
+  //set data for form if we want to change item
+  setDataForOpenWindow(item : Idata){
+    this.itemForChange = item;
+  
   }
 }

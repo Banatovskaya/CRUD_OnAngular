@@ -12,15 +12,15 @@
     <div class="icon"></div>
     <div class="icon"></div>
   </div>
-  <app-directory-item *ngFor="let item of list" 
-  [item]="item"
-  [isWindowForAddingOpen]="isWindowForAddingOpen"
-  (onChangedState)="showWindowForAdd($event)"
-  ></app-directory-item>
+  <app-directory-item *ngFor="let item of dataList" 
+    [item]="item"
+    (onChangedData)="setDataForOpenWindow($event)"
+    (onChangedState)="showWindowForAdd($event)"
+  ></app-directory-item> 
   <app-open-window *ngIf="isWindowForAddingOpen" 
-  [isWindowForAddingOpen]="isWindowForAddingOpen"
-  (onChangedState)="showWindowForAdd($event)"
-  (onChangedData)="postData($event)"
+    [isWindowForAddingOpen]="isWindowForAddingOpen"
+    [itemForChange]="itemForChange"
+    (onChangedState)="showWindowForAdd($event)"
+    (onPostedData)="postData($event)"
   ></app-open-window>
-
 </div>

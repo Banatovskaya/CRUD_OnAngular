@@ -6,16 +6,19 @@ import { Idata } from '../interfaces';
   providedIn: 'root'
 })
 export class RequestService {
-data: Idata[];
+data: Idata[] =[];
   constructor() { }
 
   getData() {
-    for(let i=0; i<localStorage.length; i++) {
+    for(let i = 0; i < localStorage.length; i++) {
       let key: any;
       key = localStorage.key(i);
-      let object: any = localStorage.getItem(key)
-      this.data.push({...object})
+      let object: any = localStorage.getItem(key);
+      object = JSON.parse(object);
+      console.log(object);
+      this.data = [...this.data, object];
     }
+    return this.data;
   }
 
   postData(dataItem : Idata) {
