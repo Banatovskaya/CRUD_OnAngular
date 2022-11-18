@@ -18,3 +18,9 @@
 .list-item__unit {
   width: 10%;
 }
+
+@media (max-width: 767px) {
+  .list-item__name {
+    width: 20%;
+  }  
+}

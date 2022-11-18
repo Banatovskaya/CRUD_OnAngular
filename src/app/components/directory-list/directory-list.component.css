@@ -34,3 +34,9 @@
 .list_icon {
   display: inline-block;
 }
+
+@media (max-width: 767px) {
+  .list__name {
+    width: 20%;
+  }  
+}
