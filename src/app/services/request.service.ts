@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Idata } from '../interfaces';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +14,6 @@ data: Idata[] =[];
       key = localStorage.key(i);
       let object: any = localStorage.getItem(key);
       object = JSON.parse(object);
-      console.log(object);
       this.data = [...this.data, object];
     }
     return this.data;
@@ -28,7 +26,6 @@ data: Idata[] =[];
   }
 
   deleteData(dataItem : Idata) {
-    localStorage.removeItem((dataItem.id).toString())
+    localStorage.removeItem((dataItem.id).toString());
   }
-
 }

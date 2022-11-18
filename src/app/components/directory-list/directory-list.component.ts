@@ -20,6 +20,8 @@ export class DirectoryListComponent implements OnInit {
       unit: 'pcs'
     },
   ];
+  //////////////////////////////////////
+  
   dataList : Idata[];
   isWindowForAddingOpen : boolean;
   itemForChange : Idata = {
@@ -37,13 +39,14 @@ export class DirectoryListComponent implements OnInit {
     for(let i = 0; i< this.list.length; i++){
       this.request.postData(this.list[i])
     }
-    //
+    ////////////////////////////////////////////////////////
+
     this.dataList = (this.request.getData()).sort((a, b) => (a.id - b.id));
   }
 
   showWindowForAdd(isOpen : boolean) {
     this.isWindowForAddingOpen = isOpen;
-    //the fields of form must be empty. They aren`t epmty after setDataForOpenWindow
+    //the fields of form for gteate New data must be empty. They aren`t epmty after setDataForOpenWindow
     this.itemForChange = { 
       id: 0,
       name: '',
@@ -58,7 +61,7 @@ export class DirectoryListComponent implements OnInit {
     this.dataList = ([...filteredItem, data]).sort((a, b) => (a.id - b.id));
   }
 
-  //set data for form if we want to change item
+  //set data for form if we want to have a filled form when we change data
   setDataForOpenWindow(item : Idata){
     this.itemForChange = item;
   }

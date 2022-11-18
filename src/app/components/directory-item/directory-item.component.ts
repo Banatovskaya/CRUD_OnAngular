@@ -8,7 +8,6 @@ import { Idata } from 'src/app/interfaces';
 })
 export class DirectoryItemComponent implements OnInit {
   @Input() item: Idata;
-  // @Input()isWindowForAddingOpen:boolean
   @Output() onChangedState: EventEmitter<boolean> = new EventEmitter();
   @Output() onChangedData: EventEmitter<Idata> = new EventEmitter();
   @Output() onDeleteItem: EventEmitter<Idata> = new EventEmitter();
@@ -17,14 +16,12 @@ export class DirectoryItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   showWindowForAdd () {
     this.isWindowForAddingOpen = true;
     this.onChangedState.emit(this.isWindowForAddingOpen)
     this.onChangedData.emit(this.item)
-    console.log("directory-item2",this.item)
   }
 
   deleteItem() {

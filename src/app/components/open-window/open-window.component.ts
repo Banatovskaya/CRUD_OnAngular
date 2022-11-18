@@ -7,6 +7,13 @@ import { Idata } from 'src/app/interfaces';
   styleUrls: ['./open-window.component.css']
 })
 export class OpenWindowComponent implements OnInit {
+  item : Idata;
+// if we @input object - we can change object in parent component 
+// but if we just close window without saving we don`t need in changing
+  @Input()id : number;
+  @Input()name : string;
+  @Input()price : number;
+  @Input()unit : string;
 
   @Input() isWindowForAddingOpen : boolean;
   @Input() itemForChange : Idata;
@@ -16,35 +23,39 @@ export class OpenWindowComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.item = {
+      id: this.id,
+      name: this.name,
+      price: this.price,
+      unit: this.unit
+    }
   }
 
   sendData(){
-    if(!this.itemForChange.name || !this.itemForChange.unit || (this.itemForChange.price <= 0)) {
+    if(!this.name || !this.unit || (this.price <= 0)) {
       alert('please add data');
       return;
     }
-    if (this.itemForChange.id == 0) {
-      this.itemForChange.id = localStorage.length + 1
+    if (this.id == 0) {
+      this.id = localStorage.length + 1
       } 
     const data = {
-      id: this.itemForChange.id,
-      name: this.itemForChange.name,
-      price: this.itemForChange.price,
-      unit: this.itemForChange.unit  
+      id: this.id,
+      name: this.name,
+      price: this.price,
+      unit: this.unit  
     }
     
     this.onPostedData.emit(data)
     this.onClose();
-    this.itemForChange.id = 0;
-    this.itemForChange.name = '';
-    this.itemForChange.price = 0;
-    this.itemForChange.unit = '';
-    console.log("SEND", data)
+    this.id = 0;
+    this.name = '';
+    this.price = 0;
+    this.unit = '';
   }  
   
   onClose(){
     this.isWindowForAddingOpen = false;
     this.onChangedState.emit(this.isWindowForAddingOpen)
   }
-
 }

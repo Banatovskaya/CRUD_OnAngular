@@ -20,7 +20,10 @@
   ></app-directory-item> 
   <app-open-window *ngIf="isWindowForAddingOpen" 
     [isWindowForAddingOpen]="isWindowForAddingOpen"
-    [itemForChange]="itemForChange"
+    [id]="itemForChange.id"
+    [name]="itemForChange.name"
+    [price]="itemForChange.price"
+    [unit]="itemForChange.unit"
     (onChangedState)="showWindowForAdd($event)"
     (onPostedData)="postData($event)"
   ></app-open-window>
