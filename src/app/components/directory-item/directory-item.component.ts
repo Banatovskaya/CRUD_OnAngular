@@ -11,7 +11,7 @@ export class DirectoryItemComponent implements OnInit {
   // @Input()isWindowForAddingOpen:boolean
   @Output() onChangedState: EventEmitter<boolean> = new EventEmitter();
   @Output() onChangedData: EventEmitter<Idata> = new EventEmitter();
-  
+  @Output() onDeleteItem: EventEmitter<Idata> = new EventEmitter();
   isWindowForAddingOpen:boolean;
 
   constructor() { }
@@ -27,5 +27,8 @@ export class DirectoryItemComponent implements OnInit {
     console.log("directory-item2",this.item)
   }
 
+  deleteItem() {
+    this.onDeleteItem.emit(this.item)
+  }
 
 }

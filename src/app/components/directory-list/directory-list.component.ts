@@ -41,7 +41,7 @@ export class DirectoryListComponent implements OnInit {
     this.dataList = (this.request.getData()).sort((a, b) => (a.id - b.id));
   }
 
-  showWindowForAdd(isOpen:boolean) {
+  showWindowForAdd(isOpen : boolean) {
     this.isWindowForAddingOpen = isOpen;
     //the fields of form must be empty. They aren`t epmty after setDataForOpenWindow
     this.itemForChange = { 
@@ -52,7 +52,7 @@ export class DirectoryListComponent implements OnInit {
     }
   }
   
-  postData (data:Idata) {
+  postData (data : Idata) {
     this.request.postData(data);
     let filteredItem = this.dataList.filter(el => (el.id != data.id))
     this.dataList = ([...filteredItem, data]).sort((a, b) => (a.id - b.id));
@@ -61,5 +61,11 @@ export class DirectoryListComponent implements OnInit {
   //set data for form if we want to change item
   setDataForOpenWindow(item : Idata){
     this.itemForChange = item;
+  }
+
+  deleteItem(data : Idata) {
+    this.request.deleteData(data)
+    this.dataList = this.dataList.filter(el => (el.id != data.id))
+    this.dataList = (this.dataList).sort((a, b) => (a.id - b.id));
   }
 }

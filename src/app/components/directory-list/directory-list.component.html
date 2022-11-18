@@ -16,6 +16,7 @@
     [item]="item"
     (onChangedData)="setDataForOpenWindow($event)"
     (onChangedState)="showWindowForAdd($event)"
+    (onDeleteItem)="deleteItem($event)"
   ></app-directory-item> 
   <app-open-window *ngIf="isWindowForAddingOpen" 
     [isWindowForAddingOpen]="isWindowForAddingOpen"
